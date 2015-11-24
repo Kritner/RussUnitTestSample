@@ -44,16 +44,46 @@ namespace RussUnitTestSample.Business.Tests
         {
             // Arrange
             double[] numbers = { 1, 2 };
-            double expectedResult = numbers.Sum();
+            NumberFunctions nf = new NumberFunctions();
 
             // Act
-            NumberFunctions nf = new NumberFunctions();
             var result = nf.AddNumbers(numbers);
 
             // Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(numbers.Sum(), result);
         }
 
+        /// <summary>
+        /// Add 10 numbers mixed positive and negative
+        /// </summary>
+        [TestMethod]
+        public void AddNumbers_TenNumbers()
+        {
+            // Arrange
+            double[] numbers = { 1, -2, 3, 4, -5, 6, 7, -8, 9, 10 };
+            NumberFunctions nf = new NumberFunctions();
+
+            // Act
+            var result = nf.AddNumbers(numbers);
+
+            // Assert
+            Assert.AreEqual(numbers.Sum(), result);
+        }
+
+        [TestMethod]
+        public void AddNumbers_ProvideOneNumber()
+        {
+            // Arrange
+            double[] numbers = { 1 };
+            NumberFunctions nf = new NumberFunctions();
+
+            // Act
+            var result = nf.AddNumbers(numbers);
+
+            // Assert
+            Assert.AreEqual(numbers.Sum(), result);
+        }
+        
         #endregion Public methods
     }
 }
