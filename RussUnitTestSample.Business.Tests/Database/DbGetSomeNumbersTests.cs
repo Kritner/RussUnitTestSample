@@ -54,12 +54,12 @@ namespace RussUnitTestSample.Business.Tests.Database
         public void DbGetSomeNumbers_Execute()
         {
             // Arrange
+            _baseDb.Setup(s => s.GetDatabaseConnection()).Returns(_dbConnection.Object);
             _dataReader.Setup(s => s.Read())
               .Returns(new Queue<bool>(new[] { true, true, false }).Dequeue);
             _dbCommand.Setup(s => s.ExecuteReader()).Returns(_dataReader.Object);
             _dbConnection.Setup(s => s.CreateCommand()).Returns(_dbCommand.Object);
-            _baseDb.Setup(s => s.GetDatabaseConnection()).Returns(_dbConnection.Object);
-            
+
             DbGetSomeNumbers obj = new DbGetSomeNumbers(_baseDb.Object);
 
             // Act
