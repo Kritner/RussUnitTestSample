@@ -24,7 +24,9 @@ namespace RussUnitTestSample
                 new NumberFunctions()
             );
 
+            Console.WriteLine("\n\n");
             Console.WriteLine(obj.Execute());
+            Console.WriteLine("\n\n");
         }
 
         #endregion Entry

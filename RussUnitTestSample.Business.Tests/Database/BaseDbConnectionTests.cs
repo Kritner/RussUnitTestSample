@@ -38,6 +38,20 @@ namespace RussUnitTestSample.Business.Tests.Database
         /// Test that badly formatted connection string throws exception
         /// </summary>
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void BaseDbConnection_BadConnectionString()
+        {
+            // Arrange
+            BaseDbConnection obj = new BaseDbConnection(TEST_BAD_CONNECTION_STRING);
+
+            // Act
+            var result = obj.GetDatabaseConnection();
+        }
+
+        /// <summary>
+        /// Test that badly formatted connection string throws exception
+        /// </summary>
+        [TestMethod]
         public void BaseDbConnection_IDbConnectionGetsConnectionString()
         {
             // Arrange
@@ -48,20 +62,6 @@ namespace RussUnitTestSample.Business.Tests.Database
 
             // Assert
             Assert.AreEqual(TEST_GOOD_CONNECTION_STRING, result.ConnectionString);
-        }
-
-        /// <summary>
-        /// Test that badly formatted connection string throws exception
-        /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void BaseDbConnection_BadConnectionString()
-        {
-            // Arrange
-            BaseDbConnection obj = new BaseDbConnection(TEST_BAD_CONNECTION_STRING);
-
-            // Act
-            var result = obj.GetDatabaseConnection();
         }
 
         #endregion Public
