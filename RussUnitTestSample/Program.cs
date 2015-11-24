@@ -12,7 +12,7 @@ namespace RussUnitTestSample
     {
 
         #region consts
-        const string CONNECTION_STRING = "Data Source=192.168.50.4,1515;Initial Catalog=MBES;Persist Security Info=True;User ID=mbescbes;Password=dorsey";
+        const string CONNECTION_STRING = "Data Source=192.168.50.4,1515;Initial Catalog=MBES;Persist Security Info=True;Integrated Security=true;";
         #endregion consts
 
         #region Entry

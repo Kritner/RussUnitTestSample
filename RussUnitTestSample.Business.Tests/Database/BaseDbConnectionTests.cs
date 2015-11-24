@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RussUnitTestSample.Business.Database;
@@ -11,12 +12,13 @@ namespace RussUnitTestSample.Business.Tests.Database
     /// Tets for BaseDbConnection
     /// </summary>
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class BaseDbConnectionTests
     {
 
         #region consts
         const string TEST_BAD_CONNECTION_STRING = "bad connection string";
-        const string TEST_GOOD_CONNECTION_STRING = "Data Source=192.168.50.4,1515;Initial Catalog=MBES;Persist Security Info=True;User ID=mbescbes;Password=dorsey";
+        const string TEST_GOOD_CONNECTION_STRING = "Data Source=192.168.50.4,1515;Initial Catalog=MBES;Persist Security Info=True;Integrated Security=true;";
         #endregion consts
 
         #region Public
