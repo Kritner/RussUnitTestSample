@@ -7,8 +7,14 @@ using RussUnitTestSample.Business.Interface;
 
 namespace RussUnitTestSample.Business
 {
+
+    /// <summary>
+    /// Number functions
+    /// </summary>
     public class NumberFunctions : INumberFunctions
     {
+
+        #region Public methods
 
         /// <summary>
         /// Add numbers together
@@ -24,6 +30,8 @@ namespace RussUnitTestSample.Business
 
             return numbers.Sum();
         }
+
+        #endregion Public methods
 
     }
 }

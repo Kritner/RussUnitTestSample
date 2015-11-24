@@ -58,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Database\DbGetSomeNumbersTests.cs" />
+    <Compile Include="Database\BaseDbConnectionTests.cs" />
     <Compile Include="GetNumbersAndAddThemTests.cs" />
     <Compile Include="NumberFunctionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

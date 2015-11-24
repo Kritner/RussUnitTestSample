@@ -19,6 +19,23 @@ namespace RussUnitTestSample.Business.Tests
     public class GetNumbersAndAddThemTests
     {
 
+        #region Private
+        Mock<INumberFunctions> _mockNumberFunctions;
+        Mock<IDbGetSomeNumbers> _mockIDbGetSomeNumbers;
+        #endregion Private
+
+        #region Public methods
+
+        /// <summary>
+        /// Setup mock objects
+        /// </summary>
+        [TestInitialize]
+        public void Setup()
+        {
+            _mockNumberFunctions = new Mock<INumberFunctions>();
+            _mockIDbGetSomeNumbers = new Mock<IDbGetSomeNumbers>();
+        }
+
         /// <summary>
         /// Ensure ArgumentNullException thrown when no IDbGetSomeNumbers implementation is provided
         /// </summary>
@@ -27,8 +44,7 @@ namespace RussUnitTestSample.Business.Tests
         public void GetNumbersAndAddThem_Constructor_NullIDbGetSomeNumbers()
         {
             // Arrange / Act / Assert
-            Mock<INumberFunctions> mockNumberFunctions = new Mock<INumberFunctions>();
-            GetNumbersAndAddThem obj = new GetNumbersAndAddThem(null, mockNumberFunctions.Object);
+            GetNumbersAndAddThem obj = new GetNumbersAndAddThem(null, _mockNumberFunctions.Object);
         }
 
         /// <summary>
@@ -39,8 +55,7 @@ namespace RussUnitTestSample.Business.Tests
         public void GetNumbersAndAddThem_Constructor_NullNumberFunctions()
         {
             // Arranage / Act / Assert
-            Mock<IDbGetSomeNumbers> mockIDbGetSomeNumbers = new Mock<IDbGetSomeNumbers>();
-            GetNumbersAndAddThem obj = new GetNumbersAndAddThem(mockIDbGetSomeNumbers.Object, null);
+            GetNumbersAndAddThem obj = new GetNumbersAndAddThem(_mockIDbGetSomeNumbers.Object, null);
         }
 
         /// <summary>
@@ -53,13 +68,10 @@ namespace RussUnitTestSample.Business.Tests
             double[] numbersToUse = { 1, 2, 3, 4, 5 };
             double expected = numbersToUse.Sum();
 
-            Mock<IDbGetSomeNumbers> mockIDbGetSomeNumbers = new Mock<IDbGetSomeNumbers>();
-            mockIDbGetSomeNumbers.Setup(s => s.GetSomeNumbers()).Returns(numbersToUse);
+            _mockIDbGetSomeNumbers.Setup(s => s.GetSomeNumbers()).Returns(numbersToUse);
+            _mockNumberFunctions.Setup(s => s.AddNumbers(It.IsAny<double[]>())).Returns(expected);
 
-            Mock<INumberFunctions> mockNumberFunctions = new Mock<INumberFunctions>();
-            mockNumberFunctions.Setup(s => s.AddNumbers(It.IsAny<double[]>())).Returns(expected);
-
-            GetNumbersAndAddThem obj = new GetNumbersAndAddThem(mockIDbGetSomeNumbers.Object, mockNumberFunctions.Object);
+            GetNumbersAndAddThem obj = new GetNumbersAndAddThem(_mockIDbGetSomeNumbers.Object, _mockNumberFunctions.Object);
 
             // Act
             var result = obj.Execute();
@@ -67,6 +79,8 @@ namespace RussUnitTestSample.Business.Tests
             // Assert
             Assert.AreEqual(expected, result);
         }
+
+        #endregion Public methods
 
     }
 }

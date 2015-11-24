@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\BaseDbConnection.cs" />
     <Compile Include="Database\DbGetSomeNumbers.cs" />
     <Compile Include="GetNumbersAndAddThem.cs" />
     <Compile Include="Interface\IBaseDatabaseConnection.cs" />

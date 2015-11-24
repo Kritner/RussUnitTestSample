@@ -9,10 +9,22 @@ using RussUnitTestSample.Business.Interface;
 
 namespace RussUnitTestSample.Business.Database
 {
+
+    /// <summary>
+    /// Get some numbers from the database
+    /// </summary>
     public class DbGetSomeNumbers : IDbGetSomeNumbers
     {
-        private readonly IBaseDatabaseConnection _baseDb;
 
+        #region consts
+        const string SQL_GET_NUMBERS_COMMAND = "SELECT convert(float, 1) as columnName UNION SELECT 2 as columnName UNION SELECT 3 as columnName";
+        #endregion consts
+
+        #region Privates
+        private readonly IBaseDatabaseConnection _baseDb;
+        #endregion Privates
+        
+        #region ctor
         /// <summary>
         /// Constructor - takes in database dependencies
         /// </summary>
@@ -24,7 +36,14 @@ namespace RussUnitTestSample.Business.Database
 
             this._baseDb = baseDb;
         }
+        #endregion ctor
 
+        #region Public methods
+
+        /// <summary>
+        /// Get some numbers from the database
+        /// </summary>
+        /// <returns>array of numbers</returns>
         public double[] GetSomeNumbers()
         {
             List<double> results = new List<double>();
@@ -35,9 +54,9 @@ namespace RussUnitTestSample.Business.Database
 
                 using (IDbCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "usp_someStoredProc";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
+                    cmd.CommandText = SQL_GET_NUMBERS_COMMAND;
+                    cmd.CommandType = CommandType.Text;
+                    
                     using (IDataReader rdr = cmd.ExecuteReader())
                     {
                         while (rdr.Read())
@@ -51,6 +70,8 @@ namespace RussUnitTestSample.Business.Database
 
             return results.ToArray();            
         }
+
+        #endregion Public methods
 
     }
 }

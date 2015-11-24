@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace RussUnitTestSample.Business.Interface
 {
+
+    /// <summary>
+    /// Interface for number functions
+    /// </summary>
     public interface INumberFunctions
     {
         /// <summary>

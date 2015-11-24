@@ -15,10 +15,14 @@ namespace RussUnitTestSample.Business.Tests.Database
     public class DbGetSomeNumbersTests
     {
 
+        #region Private
         private Mock<IBaseDatabaseConnection> _baseDb;
         private Mock<IDbConnection> _dbConnection;
         private Mock<IDbCommand> _dbCommand;
         private Mock<IDataReader> _dataReader;
+        #endregion Private
+
+        #region Public methods
 
         /// <summary>
         /// Initialize test mocks.
@@ -30,12 +34,6 @@ namespace RussUnitTestSample.Business.Tests.Database
             _dbConnection = new Mock<IDbConnection>();
             _dbCommand = new Mock<IDbCommand>();
             _dataReader = new Mock<IDataReader>();
-
-            _dataReader.Setup(s => s.Read())
-              .Returns(new Queue<bool>(new[] { true, true, false }).Dequeue);
-            _dbCommand.Setup(s => s.ExecuteReader()).Returns(_dataReader.Object);
-            _dbConnection.Setup(s => s.CreateCommand()).Returns(_dbCommand.Object);
-            _baseDb.Setup(s => s.GetDatabaseConnection()).Returns(_dbConnection.Object);
         }
 
         /// <summary>
@@ -56,6 +54,12 @@ namespace RussUnitTestSample.Business.Tests.Database
         public void DbGetSomeNumbers_Execute()
         {
             // Arrange
+            _dataReader.Setup(s => s.Read())
+              .Returns(new Queue<bool>(new[] { true, true, false }).Dequeue);
+            _dbCommand.Setup(s => s.ExecuteReader()).Returns(_dataReader.Object);
+            _dbConnection.Setup(s => s.CreateCommand()).Returns(_dbCommand.Object);
+            _baseDb.Setup(s => s.GetDatabaseConnection()).Returns(_dbConnection.Object);
+            
             DbGetSomeNumbers obj = new DbGetSomeNumbers(_baseDb.Object);
 
             // Act
@@ -64,5 +68,8 @@ namespace RussUnitTestSample.Business.Tests.Database
             // Assert
             Assert.IsInstanceOfType(results, typeof(double[]));
         }
+
+        #endregion Public methods
+
     }
 }

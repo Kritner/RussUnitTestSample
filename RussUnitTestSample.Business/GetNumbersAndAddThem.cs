@@ -7,11 +7,19 @@ using RussUnitTestSample.Business.Interface;
 
 namespace RussUnitTestSample.Business
 {
+
+    /// <summary>
+    /// Get numbers and then add them together
+    /// </summary>
     public class GetNumbersAndAddThem
     {
 
+        #region Private
         private readonly IDbGetSomeNumbers _dbGetSomeNumbers;
         private readonly INumberFunctions _numberFunctions;
+        #endregion Private
+
+        #region ctor
 
         /// <summary>
         /// Constructor - provide dependencies
@@ -30,6 +38,10 @@ namespace RussUnitTestSample.Business
             this._numberFunctions = numberFunctions;
         }
 
+        #endregion ctor
+
+        #region Public methods
+
         /// <summary>
         /// Get the numbers and add them.
         /// </summary>
@@ -40,6 +52,9 @@ namespace RussUnitTestSample.Business
 
             return _numberFunctions.AddNumbers(numbers);
         }
+
+        #endregion Public methods
+
     }
 
 }

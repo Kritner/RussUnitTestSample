@@ -10,6 +10,8 @@ namespace RussUnitTestSample.Business.Tests
     public class NumberFunctionTests
     {
 
+        #region Public methods
+
         /// <summary>
         /// Test exception thrown when numbers provided is null
         /// </summary>
@@ -51,5 +53,7 @@ namespace RussUnitTestSample.Business.Tests
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        #endregion Public methods
     }
 }
