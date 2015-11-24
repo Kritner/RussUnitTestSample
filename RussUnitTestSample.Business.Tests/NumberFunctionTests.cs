@@ -57,7 +57,7 @@ namespace RussUnitTestSample.Business.Tests
         /// Add 10 numbers mixed positive and negative
         /// </summary>
         [TestMethod]
-        public void AddNumbers_TenNumbers()
+        public void AddNumbers_TenNumbersWithPositiveAndNegatives()
         {
             // Arrange
             double[] numbers = { 1, -2, 3, 4, -5, 6, 7, -8, 9, 10 };
