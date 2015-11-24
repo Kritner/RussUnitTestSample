@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RussUnitTestSample.Business.Database;
+using RussUnitTestSample.Business.Interface;
 
 namespace RussUnitTestSample.Business.Tests.Database
 {
@@ -14,6 +15,7 @@ namespace RussUnitTestSample.Business.Tests.Database
     public class DbGetSomeNumbersTests
     {
 
+        private Mock<IBaseDatabaseConnection> _baseDb;
         private Mock<IDbConnection> _dbConnection;
         private Mock<IDbCommand> _dbCommand;
         private Mock<IDataReader> _dataReader;
@@ -24,36 +26,27 @@ namespace RussUnitTestSample.Business.Tests.Database
         [TestInitialize]
         public void Setup()
         {
+            _baseDb = new Mock<IBaseDatabaseConnection>();
             _dbConnection = new Mock<IDbConnection>();
             _dbCommand = new Mock<IDbCommand>();
             _dataReader = new Mock<IDataReader>();
 
-            _dataReader.Setup(r => r.Read())
+            _dataReader.Setup(s => s.Read())
               .Returns(new Queue<bool>(new[] { true, true, false }).Dequeue);
             _dbCommand.Setup(s => s.ExecuteReader()).Returns(_dataReader.Object);
             _dbConnection.Setup(s => s.CreateCommand()).Returns(_dbCommand.Object);
+            _baseDb.Setup(s => s.GetDatabaseConnection()).Returns(_dbConnection.Object);
         }
 
         /// <summary>
-        /// Ensure exception thrown when DBConnection not provided
-        /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void DbGetSomeNumbers_ConstructorDbConnectionNull()
-        {
-            // Arrange / Act / Assert
-            DbGetSomeNumbers obj = new DbGetSomeNumbers(null, _dbCommand.Object);
-        }
-
-        /// <summary>
-        /// Ensure exception thrown when DBConnection not provided
+        /// Ensure exception thrown when BaseDb not provided
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void DbGetSomeNumbers_ConstructorDbCommandNull()
         {
             // Arrange / Act / Assert
-            DbGetSomeNumbers obj = new DbGetSomeNumbers(_dbConnection.Object, null);
+            DbGetSomeNumbers obj = new DbGetSomeNumbers(null);
         }
 
         /// <summary>
@@ -63,7 +56,7 @@ namespace RussUnitTestSample.Business.Tests.Database
         public void DbGetSomeNumbers_Execute()
         {
             // Arrange
-            DbGetSomeNumbers obj = new DbGetSomeNumbers(_dbConnection.Object, _dbCommand.Object);
+            DbGetSomeNumbers obj = new DbGetSomeNumbers(_baseDb.Object);
 
             // Act
             var results = obj.GetSomeNumbers();

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Database\DbGetSomeNumbers.cs" />
     <Compile Include="GetNumbersAndAddThem.cs" />
+    <Compile Include="Interface\IBaseDatabaseConnection.cs" />
     <Compile Include="Interface\IDbGetSomeNumbers.cs" />
     <Compile Include="Interface\INumberFunctions.cs" />
     <Compile Include="NumberFunctions.cs" />

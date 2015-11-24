@@ -11,43 +11,43 @@ namespace RussUnitTestSample.Business.Database
 {
     public class DbGetSomeNumbers : IDbGetSomeNumbers
     {
-
-        private readonly IDbConnection _dbConnection;
-        private readonly IDbCommand _dbCommand;
+        private readonly IBaseDatabaseConnection _baseDb;
 
         /// <summary>
-        /// Constructor - takes in dependencies
+        /// Constructor - takes in database dependencies
         /// </summary>
-        /// <param name="dbConnection">The database connection to use.</param>
-        /// <param name="dbCommand">The database command to use</param>
-        public DbGetSomeNumbers(IDbConnection dbConnection, IDbCommand dbCommand)
+        /// <param name="baseDb">The database connection</param>
+        public DbGetSomeNumbers(IBaseDatabaseConnection baseDb)
         {
-            if (dbConnection == null)
-                throw new ArgumentNullException(nameof(dbConnection));
-            if (dbCommand == null)
-                throw new ArgumentNullException(nameof(dbCommand));
+            if (baseDb == null)
+                throw new ArgumentNullException(nameof(baseDb));
 
-            this._dbConnection = dbConnection;
-            this._dbCommand = dbCommand;
+            this._baseDb = baseDb;
         }
 
         public double[] GetSomeNumbers()
         {
             List<double> results = new List<double>();
-            
-            _dbConnection.Open();
-            _dbCommand.Connection = _dbConnection;
 
-            IDataReader rdr = _dbCommand.ExecuteReader();
-            while (rdr.Read())
+            using (IDbConnection conn = _baseDb.GetDatabaseConnection())
             {
-                if (!rdr.IsDBNull(rdr.GetOrdinal("columnName")))
-                    results.Add(rdr.GetDouble(rdr.GetOrdinal("columnName")));
-            }
+                conn.Open();
 
-            _dbCommand.Dispose();
-            _dbConnection.Close();
-            _dbConnection.Dispose();
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "usp_someStoredProc";
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (IDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            if (!rdr.IsDBNull(rdr.GetOrdinal("columnName")))
+                                results.Add(rdr.GetDouble(rdr.GetOrdinal("columnName")));
+                        }
+                    }
+                }
+            }
 
             return results.ToArray();            
         }
