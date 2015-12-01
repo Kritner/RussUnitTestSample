@@ -4,10 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample", "RussUnitTestSample\RussUnitTestSample.csproj", "{50A5566E-B663-4E13-9058-73651B9FC853}"
+	ProjectSection(ProjectDependencies) = postProject
+		{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4} = {805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample.Business", "RussUnitTestSample.Business\RussUnitTestSample.Business.csproj", "{70A87106-B4DD-42E8-B232-3AABA7E5F864}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample.Business.Tests", "RussUnitTestSample.Business.Tests\RussUnitTestSample.Business.Tests.csproj", "{079FAD48-C8AE-43CD-940A-FCF960AD41AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample.Wcf", "RussUnitTestSample.Wcf\RussUnitTestSample.Wcf.csproj", "{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +32,10 @@ Global
 		{079FAD48-C8AE-43CD-940A-FCF960AD41AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{079FAD48-C8AE-43CD-940A-FCF960AD41AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{079FAD48-C8AE-43CD-940A-FCF960AD41AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
