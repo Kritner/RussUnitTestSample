@@ -24,9 +24,16 @@ namespace RussUnitTestSample
                 new NumberFunctions()
             );
 
-            Console.WriteLine("\n\n");
+            Console.WriteLine("\n");
             Console.WriteLine(obj.Execute());
-            Console.WriteLine("\n\n");
+            Console.WriteLine("\n");
+
+            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
+
+            Console.WriteLine("\n");
+            Console.WriteLine("{0}", client.GetData(42));
+            Console.WriteLine("\n");
+
         }
 
         #endregion Entry
