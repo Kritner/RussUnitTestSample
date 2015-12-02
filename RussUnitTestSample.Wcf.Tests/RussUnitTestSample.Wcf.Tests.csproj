@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{079FAD48-C8AE-43CD-940A-FCF960AD41AF}</ProjectGuid>
+    <ProjectGuid>{C36014F8-3D87-4D4B-B2DC-76BACD1BC5CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RussUnitTestSample.Business.Tests</RootNamespace>
-    <AssemblyName>RussUnitTestSample.Business.Tests</AssemblyName>
+    <RootNamespace>RussUnitTestSample.Wcf.Tests</RootNamespace>
+    <AssemblyName>RussUnitTestSample.Wcf.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,12 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,29 +45,19 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Database\DbGetSomeNumbersTests.cs" />
-    <Compile Include="Database\BaseDbConnectionTests.cs" />
-    <Compile Include="GetNumbersAndAddThemTests.cs" />
-    <Compile Include="NumberFunctionTests.cs" />
+    <Compile Include="Service1Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WCF\Service1Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RussUnitTestSample.Business\RussUnitTestSample.Business.csproj">
-      <Project>{70a87106-b4dd-42e8-b232-3aaba7e5f864}</Project>
-      <Name>RussUnitTestSample.Business</Name>
+    <ProjectReference Include="..\RussUnitTestSample.Wcf\RussUnitTestSample.Wcf.csproj">
+      <Project>{805b0d6d-eb11-4606-9fa4-d3fbd9a7bfe4}</Project>
+      <Name>RussUnitTestSample.Wcf</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
