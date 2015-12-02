@@ -28,10 +28,10 @@ namespace RussUnitTestSample
             Console.WriteLine(obj.Execute());
             Console.WriteLine("\n");
 
-            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
+            Business.WCF.Service1 service = new Business.WCF.Service1();
 
             Console.WriteLine("\n");
-            Console.WriteLine("{0}", client.GetData(42));
+            Console.WriteLine("{0}", service.GetData(42));
             Console.WriteLine("\n");
 
         }

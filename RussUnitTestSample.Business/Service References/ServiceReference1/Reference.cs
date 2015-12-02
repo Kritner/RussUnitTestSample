@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RussUnitTestSample.ServiceReference1 {
+namespace RussUnitTestSample.Business.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -85,19 +85,19 @@ namespace RussUnitTestSample.ServiceReference1 {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        RussUnitTestSample.ServiceReference1.CompositeType GetDataUsingDataContract(RussUnitTestSample.ServiceReference1.CompositeType composite);
+        RussUnitTestSample.Business.ServiceReference1.CompositeType GetDataUsingDataContract(RussUnitTestSample.Business.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<RussUnitTestSample.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(RussUnitTestSample.ServiceReference1.CompositeType composite);
+        System.Threading.Tasks.Task<RussUnitTestSample.Business.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(RussUnitTestSample.Business.ServiceReference1.CompositeType composite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : RussUnitTestSample.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : RussUnitTestSample.Business.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<RussUnitTestSample.ServiceReference1.IService1>, RussUnitTestSample.ServiceReference1.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<RussUnitTestSample.Business.ServiceReference1.IService1>, RussUnitTestSample.Business.ServiceReference1.IService1 {
         
         public Service1Client() {
         }
@@ -126,11 +126,11 @@ namespace RussUnitTestSample.ServiceReference1 {
             return base.Channel.GetDataAsync(value);
         }
         
-        public RussUnitTestSample.ServiceReference1.CompositeType GetDataUsingDataContract(RussUnitTestSample.ServiceReference1.CompositeType composite) {
+        public RussUnitTestSample.Business.ServiceReference1.CompositeType GetDataUsingDataContract(RussUnitTestSample.Business.ServiceReference1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<RussUnitTestSample.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(RussUnitTestSample.ServiceReference1.CompositeType composite) {
+        public System.Threading.Tasks.Task<RussUnitTestSample.Business.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(RussUnitTestSample.Business.ServiceReference1.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }
