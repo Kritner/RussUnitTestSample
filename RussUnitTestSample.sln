@@ -9,6 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample", "RussU
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample.Business", "RussUnitTestSample.Business\RussUnitTestSample.Business.csproj", "{70A87106-B4DD-42E8-B232-3AABA7E5F864}"
+	ProjectSection(ProjectDependencies) = postProject
+		{805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4} = {805B0D6D-EB11-4606-9FA4-D3FBD9A7BFE4}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RussUnitTestSample.Business.Tests", "RussUnitTestSample.Business.Tests\RussUnitTestSample.Business.Tests.csproj", "{079FAD48-C8AE-43CD-940A-FCF960AD41AF}"
 EndProject
