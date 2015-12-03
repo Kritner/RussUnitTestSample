@@ -22,14 +22,6 @@ namespace RussUnitTestSample.Business.WCF
         #region ctor
 
         /// <summary>
-        /// Constructor - new up IService1 with client
-        /// </summary>
-        public Service1()
-        {
-            this._service = new Service1Client();
-        }
-
-        /// <summary>
         /// Constructor - takes in implementation of IService1
         /// </summary>
         /// <param name="service">The IService1 implementation</param>

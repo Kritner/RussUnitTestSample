@@ -28,7 +28,7 @@ namespace RussUnitTestSample
             Console.WriteLine(obj.Execute());
             Console.WriteLine("\n");
 
-            Business.WCF.Service1 service = new Business.WCF.Service1();
+            Business.WCF.Service1 service = new Business.WCF.Service1(new Business.ServiceReference1.Service1Client());
 
             Console.WriteLine("\n");
             Console.WriteLine("{0}", service.GetData(42));
